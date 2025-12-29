@@ -1,6 +1,7 @@
 import { Box, Button, Stack, Typography } from '@mui/material'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import HeroButton from '../../common/HeroButton'
 
 const ProductCard = ({ data }) => {
   return (
@@ -45,19 +46,7 @@ const ProductCard = ({ data }) => {
       </Stack>
 
       {/* Actions */}
-      <Stack direction="row" spacing={2} sx={{ mt: 4 }}>
-        <Button variant="contained" size="large">
-          Open Your Account
-        </Button>
-        <Button variant="outlined" size="large">
-          Resume Application
-        </Button>
-      </Stack>
-
-      {/* Disclosure */}
-      <Button variant="text" sx={{ mt: 2, px: 0 }}>
-        Account Product Disclosure &gt;&gt;
-      </Button>
+      <HeroButton showDisclosure = {true} />
     </Box>
   )
 }
