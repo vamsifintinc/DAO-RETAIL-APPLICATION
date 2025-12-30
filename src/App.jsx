@@ -1,22 +1,22 @@
-// import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Home from './pages/Home'
-import GetStarted from './pages/GetStarted'
-import CD from './pages/CD'
-import MMA from './pages/MMA'
+import Register from './pages/Register'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Optional Home page */}
+        {/* Home */}
         <Route path="/" element={<Home />} />
 
-        {/* Pages with LEFT SIDE */}
-        <Route path="/GetStarted" element={<GetStarted />} />
-        <Route path="/CD" element={<CD />} />
-        <Route path="/MMA" element={<MMA />} />
+        {/* Register flows */}
+        <Route path="/getstarted" element={<Register />} />
+        <Route path="/cd" element={<Register />} />
+        <Route path="/mma" element={<Register />} />
+
+        {/* Optional: fallback */}
+        <Route path="*" element={<Home />} />
       </Routes>
     </BrowserRouter>
   )

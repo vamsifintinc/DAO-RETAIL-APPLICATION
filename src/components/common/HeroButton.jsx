@@ -6,7 +6,7 @@ const HeroButton = ({
 }) => {
   return (
     <>
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={2} sx={{mt: 2}}>
         <Button variant="contained" size={size}>
           Open Your Account
         </Button>
