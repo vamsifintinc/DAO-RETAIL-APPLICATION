@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material'
-import ERROR from '../../assets/images/error-failure.png'
+import ERROR from '../../assets/images/daor-sorry.png'
 
 const CaseError = () => {
   return (
