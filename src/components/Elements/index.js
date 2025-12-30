@@ -11,21 +11,22 @@ import {
   Grid,
 } from "@mui/material";
 import Colors from "../../constants/colors";
+
 const LeftSideGridBox = styled("div")(({ theme }) => ({
   //padding: theme.spacing(1),
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("md_p")]: {
     display: "none",
   },
-  [theme.breakpoints.up("md")]: {
+  [theme.breakpoints.up("md_p")]: {
     display: "block",
   },
 }));
 const MobileHeaderBox = styled("div")(({ theme }) => ({
   //padding: theme.spacing(1),
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("md_p")]: {
     display: "block",
   },
-  [theme.breakpoints.up("md")]: {
+  [theme.breakpoints.up("md_p")]: {
     display: "none",
   },
 }));
@@ -181,7 +182,7 @@ const MobileToggleMenu = styled.div`
 
   .headmenu {
     height: 60px;
-    background: ${Colors. LEFT_NAV_GREEN};
+    background: ${Colors.LEFT_NAV_GREEN};
     display: flex;
     justify-content: space-between;
     align-items: center;
