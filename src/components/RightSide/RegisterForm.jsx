@@ -11,6 +11,9 @@ import {
 } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faSquarePhone } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { getStartedActions } from "../../store/getstarted-slice";
+
 
 import {
   extractDigits,
@@ -40,6 +43,8 @@ const RegisterForm = ({ onBack }) => {
     },
     IsESign: { value: false },
   });
+  const dispatch = useDispatch();
+
 
   const [focused, setFocused] = useState({});
   const [openDisclosure, setOpenDisclosure] = useState(false);
@@ -258,6 +263,16 @@ const RegisterForm = ({ onBack }) => {
             disabled={!continueEnabled}
             sx={{
               backgroundColor: continueEnabled ? "#0B7A65" : undefined,
+            }}
+            onClick={() => {
+              dispatch(
+                getStartedActions.saveFormData({
+                  email: formValues.Email.value,
+                  phone: formValues.PhoneNumber.value,
+                  confirmPhone: formValues.ConfirmPhoneNumber.value,
+                  isESignAccepted: formValues.IsESign.value,
+                })
+              );
             }}
           >
             CONTINUE
