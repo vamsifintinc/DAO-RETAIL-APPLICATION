@@ -7,14 +7,9 @@ const MainLayout = ({ children, pageConstants }) => {
   const isBelow990 = useMediaQuery(theme.breakpoints.down("md_p"));
 
   return (
-    <Grid
-      container
-      minHeight="100vh"
-      direction={isBelow990 ? "column" : "row"}
-    >
+    <Grid container minHeight="100vh">
       {/* LEFT SIDE */}
       <Grid
-        item
         sx={{
           width: isBelow990 ? "100%" : "25%",
           flexShrink: 0,
@@ -25,17 +20,13 @@ const MainLayout = ({ children, pageConstants }) => {
 
       {/* RIGHT SIDE */}
       <Grid
-        item
         sx={{
           width: isBelow990 ? "100%" : "75%",
-          display: "flex",
           backgroundColor: "#fff",
-          justifyContent: isBelow990 ? "flex-start" : "center",
-          alignItems: "stretch",
-          py: 0,
         }}
       >
-        <Box sx={{ width: "100%" }}>{children}</Box>
+        {/* IMPORTANT: no centering here */}
+        {children}
       </Grid>
     </Grid>
   );
