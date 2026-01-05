@@ -25,7 +25,8 @@ const RegisterRight = () => {
   const [existingCustomer, setExistingCustomer] = useState(null);
   const [openExistingModal, setOpenExistingModal] = useState(false);
 
-  const showHeader = !(soleProprietor === true && existingCustomer === false);
+  const showHeader =
+    !isBelow990 || !(soleProprietor === true && existingCustomer === false);
   const showFooter =
     soleProprietor === null ||
     (soleProprietor === true && existingCustomer === null);
@@ -34,10 +35,7 @@ const RegisterRight = () => {
     setSoleProprietor(value);
     dispatch(getStartedActions.setSoleProprietor(value));
   };
-  const location = useLocation();
-  const navigate = useNavigate();
 
-  const isWelcomePage = location.pathname === "/welcome";
   const handleExistingCustomerChange = (value) => {
     setExistingCustomer(value);
     dispatch(getStartedActions.setExistingCustomer(value));
@@ -46,6 +44,10 @@ const RegisterRight = () => {
       setOpenExistingModal(true);
     }
   };
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isWelcomePage = location.pathname === "/welcome";
 
   const Content = (
     <>
@@ -101,8 +103,65 @@ const RegisterRight = () => {
   );
 
   return (
-    <Box sx={{ width: "100%", pt: isBelow990 ? 0 : 4 }}>
-      {!isBelow990 && !isWelcomePage && <Box sx={{ px: 6 }}>{Content}</Box>}
+    <Box sx={{ width: "100%" }}>
+      {!isBelow990 && !isWelcomePage && (
+        <Box sx={{ px: 6, pt: 4 }}>
+          <Typography
+            sx={{
+              fontSize: 24,
+              fontWeight: 700,
+              color: "#0B7A65",
+              letterSpacing: "-0.5px",
+            }}
+          >
+            Welcome
+          </Typography>
+
+          <Typography sx={{ mt: 1, fontSize: 16, color: "#4A4A4A" }}>
+            To open an account, you must be operating a business in the United
+            States only.
+          </Typography>
+
+          <Divider sx={{ my: 3 }} />
+        </Box>
+      )}
+
+      {!isBelow990 && !isWelcomePage && (
+        <Box
+          sx={{
+            maxWidth: 720,
+            mx: "auto",
+            px: 2,
+          }}
+        >
+          {soleProprietor === null && (
+            <SoleProprietor
+              value={soleProprietor}
+              onChange={handleSoleProprietorChange}
+            />
+          )}
+
+          {soleProprietor === false && <Error />}
+
+          {soleProprietor === true && (
+            <ExistingCustomer
+              value={existingCustomer}
+              onChange={handleExistingCustomerChange}
+            />
+          )}
+
+          {soleProprietor === true && existingCustomer === false && (
+            <RegisterForm
+              onBack={() => {
+                setSoleProprietor(null);
+                setExistingCustomer(null);
+                dispatch(getStartedActions.resetGetStarted());
+              }}
+              onContinue={() => navigate("/welcome")}
+            />
+          )}
+        </Box>
+      )}
 
       {isBelow990 && !isWelcomePage && (
         <Box sx={{ width: "100%", px: "20px" }}>
@@ -124,7 +183,13 @@ const RegisterRight = () => {
             {showFooter && (
               <Box sx={{ mt: 4 }}>
                 <Divider sx={{ mb: 2, mt: 12 }} />
-                <Box sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    gap: 1,
+                  }}
+                >
                   <Typography fontSize={14}>
                     Member <b>FDIC</b> / Equal Housing Lender
                   </Typography>
@@ -142,11 +207,13 @@ const RegisterRight = () => {
           </Box>
         </Box>
       )}
+
       {isWelcomePage && (
         <Box sx={{ px: isBelow990 ? 2 : 6 }}>
           <AccountSelection />
         </Box>
       )}
+
       <ExistingCustomerModal
         open={openExistingModal}
         onClose={() => {
@@ -157,4 +224,5 @@ const RegisterRight = () => {
     </Box>
   );
 };
+
 export default RegisterRight;

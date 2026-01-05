@@ -69,17 +69,17 @@ const AccountSelection = () => {
           + Add more new accounts
         </Typography>
         <Typography
-  sx={{
-    mt: 2,
-    fontSize: 14,
-    color: COLORS.NOTE_TEXT,
-    lineHeight: "20px",
-  }}
->
-Note:The maximum opening deposit amount allowed via online account
-  opening is $250,000.00 per account. Contact us at 1-877-275-4236 for additional
-  assistance.
-</Typography>
+          sx={{
+            mt: 2,
+            fontSize: 14,
+            color: COLORS.NOTE_TEXT,
+            lineHeight: "20px",
+          }}
+        >
+          Note:The maximum opening deposit amount allowed via online account
+          opening is $250,000.00 per account. Contact us at 1-877-275-4236 for additional
+          assistance.
+        </Typography>
 
       </Box>
 
