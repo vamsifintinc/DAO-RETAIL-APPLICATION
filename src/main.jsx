@@ -1,17 +1,21 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { GlobalStyles } from './globalStyles';
-import { CssBaseline, ThemeProvider } from '@mui/material'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { GlobalStyles } from "./globalStyles";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { Provider } from "react-redux";
 
-import App from './App'
-import theme from './theme/theme'
+import App from "./App";
+import theme from "./theme/theme";
+import store from "./store";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <Provider store={store}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <GlobalStyles/>
+        <GlobalStyles />
         <App />
       </ThemeProvider>
+    </Provider>
   </React.StrictMode>
-)
+);
