@@ -31,7 +31,7 @@ const getLabelColor = ({ touched, focused, error }) => {
   return "#0B7A65";
 };
 
-const RegisterForm = ({ onBack }) => {
+const RegisterForm = ({ onBack, onContinue }) => {
   const [formValues, setFormValues] = useState({
     Email: { value: "", error: false, message: "", touched: false },
     PhoneNumber: { value: "", error: false, message: "", touched: false },
@@ -273,6 +273,7 @@ const RegisterForm = ({ onBack }) => {
                   isESignAccepted: formValues.IsESign.value,
                 })
               );
+              onContinue?.();
             }}
           >
             CONTINUE

@@ -1,7 +1,9 @@
 const COLORS = {
   LEFT_NAV_GREEN: "#0B7A69",
   WHITE: "#FFFFFF",
-  // DIVIDER: "#51b985",
+  ACCORDION_BG: "#078F7D",
+  ACCORDION_HOVER_BG: "#59BC40",
+  NOTE_TEXT: "#333333",
 };
 
 export default COLORS;
