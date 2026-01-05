@@ -14,7 +14,7 @@ function App() {
         <Route path="/getstarted" element={<Register />} />
         <Route path="/cd" element={<Register />} />
         <Route path="/mma" element={<Register />} />
-
+        <Route path="/welcome" element={<Register />} /> 
         {/* Optional: fallback */}
         <Route path="*" element={<Home />} />
       </Routes>

@@ -8,12 +8,13 @@ import {
 } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { getStartedActions } from "../../store/getstarted-slice";
-
 import SoleProprietor from "./SoleProprietor";
 import ExistingCustomer from "./ExistingCustomer";
 import RegisterForm from "./RegisterForm";
 import Error from "./Error";
 import ExistingCustomerModal from "./ExistingCustomerModal";
+import AccountSelection from "./AccountSelection";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const RegisterRight = () => {
   const theme = useTheme();
@@ -33,7 +34,10 @@ const RegisterRight = () => {
     setSoleProprietor(value);
     dispatch(getStartedActions.setSoleProprietor(value));
   };
+  const location = useLocation();
+  const navigate = useNavigate();
 
+  const isWelcomePage = location.pathname === "/welcome";
   const handleExistingCustomerChange = (value) => {
     setExistingCustomer(value);
     dispatch(getStartedActions.setExistingCustomer(value));
@@ -90,6 +94,7 @@ const RegisterRight = () => {
             setExistingCustomer(null);
             dispatch(getStartedActions.resetGetStarted());
           }}
+          onContinue={() => navigate("/welcome")}
         />
       )}
     </>
@@ -97,9 +102,9 @@ const RegisterRight = () => {
 
   return (
     <Box sx={{ width: "100%", pt: isBelow990 ? 0 : 4 }}>
-      {!isBelow990 && <Box sx={{ px: 6 }}>{Content}</Box>}
+      {!isBelow990 && !isWelcomePage && <Box sx={{ px: 6 }}>{Content}</Box>}
 
-      {isBelow990 && (
+      {isBelow990 && !isWelcomePage && (
         <Box sx={{ width: "100%", px: "20px" }}>
           <Box
             sx={{
@@ -137,7 +142,11 @@ const RegisterRight = () => {
           </Box>
         </Box>
       )}
-
+      {isWelcomePage && (
+        <Box sx={{ px: isBelow990 ? 2 : 6 }}>
+          <AccountSelection />
+        </Box>
+      )}
       <ExistingCustomerModal
         open={openExistingModal}
         onClose={() => {
@@ -148,5 +157,4 @@ const RegisterRight = () => {
     </Box>
   );
 };
-
 export default RegisterRight;
