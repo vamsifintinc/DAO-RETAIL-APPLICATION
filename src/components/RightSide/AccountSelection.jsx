@@ -3,7 +3,7 @@ import AccountAccordion from "../common/AccountAccordion";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import COLORS from "../../constants/colors";
-
+import Images from "../../constants/images";
 const AccountSelection = () => {
   const location = useLocation();
   const [selectedAccounts, setSelectedAccounts] = useState([]);
@@ -86,6 +86,7 @@ const AccountSelection = () => {
       {/* ===== ACCORDIONS ===== */}
       <AccountAccordion
         title="Checking Account"
+         icon={Images.CHECKING}
         items={[
           { name: "Bank Simply Checking", rate: "No monthly fee" },
         ]}
@@ -95,6 +96,7 @@ const AccountSelection = () => {
 
       <AccountAccordion
         title="Savings Account"
+        icon={Images.SAVINGS}
         items={[
           { name: "Personal Savings", rate: "Up to 0.05% APY" },
         ]}
@@ -104,6 +106,7 @@ const AccountSelection = () => {
 
       <AccountAccordion
         title="Money Market"
+         icon={Images.MONEY_MARKET}
         defaultExpanded={expandMMA}
         items={[
           { name: "Money Market Account", rate: "Competitive rates" },
@@ -114,6 +117,7 @@ const AccountSelection = () => {
 
       <AccountAccordion
         title="Certificate of Deposit"
+        icon={Images.CD}
         defaultExpanded={expandCD}
         items={[
           { name: "12 Month CD", rate: "Up to 4.5% APY" },

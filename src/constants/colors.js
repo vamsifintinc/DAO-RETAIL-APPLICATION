@@ -4,6 +4,7 @@ const COLORS = {
   ACCORDION_BG: "#078F7D",
   ACCORDION_HOVER_BG: "#59BC40",
   NOTE_TEXT: "#333333",
+  GREEN_TEXT: "#078F7D",
 };
 
 export default COLORS;

@@ -15,7 +15,7 @@ import Error from "./Error";
 import ExistingCustomerModal from "./ExistingCustomerModal";
 import AccountSelection from "./AccountSelection";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import COLORS from "../../constants/colors";
 const RegisterRight = () => {
   const theme = useTheme();
   const isBelow990 = useMediaQuery(theme.breakpoints.down("md_p"));
@@ -104,13 +104,13 @@ const RegisterRight = () => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      {!isBelow990 && !isWelcomePage && (
+      {!isBelow990 && (
         <Box sx={{ px: 6, pt: 4 }}>
           <Typography
             sx={{
               fontSize: 24,
               fontWeight: 700,
-              color: "#0B7A65",
+              color: COLORS.GREEN_TEXT,
               letterSpacing: "-0.5px",
             }}
           >
@@ -118,8 +118,9 @@ const RegisterRight = () => {
           </Typography>
 
           <Typography sx={{ mt: 1, fontSize: 16, color: "#4A4A4A" }}>
-            To open an account, you must be operating a business in the United
-            States only.
+            {isWelcomePage
+              ? "Open an account in just a few minutes."
+              : "To open an account, you must be operating a business in the United States only."}
           </Typography>
 
           <Divider sx={{ my: 3 }} />
